@@ -1,0 +1,8 @@
+- name: Unsupported platform
+  debug:
+    msg: "CIS benchmark not implemented for this platform"
+- name: Set default compliance score
+  set_fact:
+    compliance_score:
+      compliant: 0
+      non_compliant: 0

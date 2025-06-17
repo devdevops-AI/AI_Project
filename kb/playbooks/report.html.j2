@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CIS Compliance Report</title>
+</head>
+<body>
+  <h1>CIS Compliance Summary</h1>
+  <p>Compliant: {{ total_compliant }}</p>
+  <p style="color: red;">Non-Compliant: {{ total_noncompliant }}</p>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th>Host</th>
+      <th>Compliant</th>
+      <th>Non-Compliant</th>
+    </tr>
+    {% for item in compliance_results %}
+    <tr>
+      <td>{{ item.host }}</td>
+      <td>{{ item.compliant }}</td>
+      <td{% if item.non_compliant|int > 0 %} style="color: red;"{% endif %}>{{ item.non_compliant }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "ansible-automation-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "echo \"Start client\"",
+    "test": "echo \"No tests\""
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}

@@ -1,6 +1,6 @@
 # AI_Project
 
-This repository contains a minimal skeleton for an Ansible Automation UI using the MERN stack with a placeholder for RAG and a local LLM.
+This repository contains a minimal skeleton for a web UI that can upload text documents and query them using a very small CPU-based search script. It uses Express for the backend and a lightweight React page for the frontend.
 
 ## Structure
 
@@ -21,9 +21,22 @@ This repository contains a minimal skeleton for an Ansible Automation UI using t
    ```bash
    npm start
    ```
-3. **Run the frontend** (placeholder):
-   ```bash
-   npm start
-   ```
+3. **Run the frontend** (serves static HTML):
+   Open `client/public/index.html` in a browser.
+
+### Local LLM
+
+The helper script in `server/llm.py` will use a Hugging Face
+`transformers` question-answering model when available. Install the
+library and download a model locally (for example
+`distilbert-base-uncased-distilled-squad`) so the application can run
+fully offline:
+
+```bash
+pip install transformers  # requires manual download in offline setups
+```
+
+If no model is available, the script falls back to a simple keyword
+search of uploaded documents.
 
 This is a minimal setup intended as a starting point for further development.

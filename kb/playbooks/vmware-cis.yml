@@ -1,0 +1,14 @@
+- name: ESXi 8 CIS checks
+  block:
+    - name: Placeholder - check CIS controls
+      command: echo "Check ESXi8 CIS"
+      register: esxi_cis_result
+
+    - name: Placeholder - fix CIS controls
+      command: echo "Fix ESXi8 CIS"
+
+    - name: Set compliance score
+      set_fact:
+        compliance_score:
+          compliant: 1  # placeholder
+          non_compliant: 0

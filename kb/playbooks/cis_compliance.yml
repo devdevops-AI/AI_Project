@@ -1,0 +1,32 @@
+- hosts: all
+  gather_facts: yes
+  vars:
+    compliance_results: []
+  tasks:
+    - name: Determine operating system
+      set_fact:
+        os_family: "{{ ansible_facts['os_family'] | lower }}"
+
+    - name: Include OS specific CIS checks
+      include_tasks:
+        file: "{{ lookup('first_found', params) }}"
+      vars:
+        params:
+          files:
+            - "{{ os_family }}-cis.yml"
+            - default-cis.yml
+
+    - name: Collect compliance result for host
+      set_fact:
+        compliance_results: "{{ compliance_results + [ { 'host': inventory_hostname, 'compliant': compliance_score.compliant | default(0), 'non_compliant': compliance_score.non_compliant | default(0) } ] }}"
+
+  post_tasks:
+    - name: Calculate consolidated counts
+      set_fact:
+        total_compliant: "{{ compliance_results | sum(attribute='compliant') }}"
+        total_noncompliant: "{{ compliance_results | sum(attribute='non_compliant') }}"
+
+    - name: Generate HTML report
+      template:
+        src: report.html.j2
+        dest: compliance_report.html

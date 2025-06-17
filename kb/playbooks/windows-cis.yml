@@ -1,0 +1,14 @@
+- name: Windows Server 2019 CIS checks
+  block:
+    - name: Placeholder - check CIS controls
+      win_shell: echo "Check Windows 2019 CIS"
+      register: win_cis_result
+
+    - name: Placeholder - fix CIS controls
+      win_shell: echo "Fix Windows 2019 CIS"
+
+    - name: Set compliance score
+      set_fact:
+        compliance_score:
+          compliant: 1  # placeholder
+          non_compliant: 0

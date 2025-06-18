@@ -7,6 +7,7 @@ This repository contains a minimal skeleton for a web UI that can upload text do
 - `server/` – Express.js backend with sample routes.
 - `client/` – React frontend skeleton.
 - `kb/playbooks/` – Sample knowledge base files for RAG.
+- `scripts/` – Utility scripts for system configuration.
 
 ## Getting Started
 
@@ -40,3 +41,13 @@ If no model is available, the script falls back to a simple keyword
 search of uploaded documents.
 
 This is a minimal setup intended as a starting point for further development.
+
+## RHEL 8 Benchmark Remediation
+
+The `scripts/` directory contains `fix_rhel8_benchmarks.sh`, a helper for
+applying the OpenSCAP STIG profile on RHEL&nbsp;8 systems. Run it with root
+privileges:
+
+```bash
+sudo ./scripts/fix_rhel8_benchmarks.sh
+```

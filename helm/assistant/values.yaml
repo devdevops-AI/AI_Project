@@ -1,0 +1,2 @@
+backendImage: backend:latest
+frontendImage: frontend:latest
